@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Take the Quiz</title>
+  <link rel="stylesheet" href="Quize.css">
+</head>
+
+<body>
+
+  
+  <div class="container">
+    <h1>Take the Quiz</h1>
+
+
+    <form id="Quiz" class="form" name="quiz">
+
+      <p class="questions">what is the synonym for stranger?</p>
+      <input type="radio" id="Box" name="question1" value="Evil person">Evel person<br>
+      <input type="radio" id="Box" name="question1" value="Unfamiliar person">Unfamiliar person<br>
+      <input type="radio" id="Box" name="question1" value="Friendly person">Friendly person<br>
+
+
+      <input id="button" type="button" value="check" onclick="check();">
+    </form>
+    <div class="display">
+      <div id="after_submit">
+        <p id="number_correct"></p>
+        <p id="message"></p>
+        <img id="picture">
+      </div>
+      <div>
+        <a href="Quize2.html" id="continue"></a>
+      </div>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    function check() {
+      let question1 = document.quiz.question1.value;
+
+      let correct = 0;
+      if (question1 == "Unfamiliar person") {
+        correct++;
+      }
+     
+      let picture = ["img/keepGoing.gif", "img/check.gif", "img/failed.gif"];
+      let message = ["Keep going", "Well done!", "failed"];
+      let score;
+
+      if (correct == 0) {
+        score = 0;
+      }
+      if (correct == 1) {
+        score = 1;
+      }
+
+
+
+      document.getElementById("after_submit").style.visibility = "visible";
+      document.getElementById("message").textContent = message[score];
+      document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
+      document.getElementById("picture").src = picture[score];
+      document.getElementById("continue").innerHTML = "continue";
+      document.getElementById("continue").style.visibility = "visible";
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Take the Quiz</title>
+  <link rel="stylesheet" href="Quize.css">
+     
+</head>
+<body>
+    <div class="container">
+      <h1>Take the Quiz</h1>
+
+
+      <form id = "Quiz" class = "form" name = "quiz">
+    
+            <p class = "questions">Can I park here?</p>
+            <input type = "radio" id = "box" name = "question7" value = "sorry">Sorry, I did that<br/>
+            <input type = "radio" id = "box" name = "question7" value = "same">It's the same place<br/>
+            <input type = "radio" id = "box" name = "question7" value = "half">Only for half an hour<br/>
+  
+
+        <input id = "button" type = "button" value = "check" onclick = "check();">
+    </form>
+    <div class = "display">
+      <div id = "after_submit">
+      <p id = "number_correct"></p>
+      <p id = "message"></p>
+      <img id = "picture">
+      </div>
+    <div>
+        <a href = "finish.html" id = "continue"></a>
+    </div>
+   </div>
+  </div>
+  <script type = "text/javascript">
+                      function check(){
+                      let question7 = document.quiz.question7.value;
+                      
+                      let correct = 0;
+                      if (question7 == "half"){
+                        correct++;
+                      }
+                      let picture = ["img/keepGoing.gif", "img/check.gif", "img/failed.gif"];
+                      let message =  ["Keep going", "Well done!", "failed"];
+                      let score;
+                      
+                      if (correct == 0) {
+                      score = 0;
+                       }
+                     if(correct == 1){
+                       score = 1;
+                     } 
+
+document.getElementById("after_submit").style.visibility = "visible";
+document.getElementById("message").innerHTML = message[score];
+document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
+document.getElementById("picture").src = picture[score];
+document.getElementById("continue").textContent = "continue";
+document.getElementById("continue").style.visibility = "visible";}
+</script>
+</body>
+</html>
